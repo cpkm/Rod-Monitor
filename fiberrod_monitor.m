@@ -287,8 +287,8 @@ set(handles.pscDisp, 'String', pscStr);
 % set(handles.dnpDisp, 'String', DevStr);
 % %set(handles.dnpDisp, 'ForegroundColor', crvCol);
 
-%Temperature Diode display
-curTmp1 = (tmp1Vlt - handles.tmp1Ofs)/handles.tmp1Cal;
+%Temperature Rod display
+curTmp1 = (tmp1Vlt - handles.tmp1Ofs)/handles.tmp1Cal; %%%%%%%%%%%%%%%%%
 % curTmp1 = 379.895*tmp1Vlt - 497.653;
 
 if curTmp1 <= handles.tmpDng1(1) || curTmp1 >= handles.tmpDng1(2) 
@@ -296,13 +296,13 @@ if curTmp1 <= handles.tmpDng1(1) || curTmp1 >= handles.tmpDng1(2)
 elseif curTmp1 <= handles.tmpWrn1(1) || curTmp1 >= handles.tmpWrn1(2)
     tmpCol = handles.wrnCol;   %warning, yellow
 else
-    tmpCol = handles.safeCol;   %safe, green
+    tmpCol = handles.safeCol;   %safe, green 
 end
 
 set(handles.tmp1Disp, 'String', num2str(curTmp1,'%.1f'));
 set(handles.tmp1Disp, 'ForegroundColor', tmpCol);
 
-%Temperature 2 (xstal) display
+%Temperature 2 Diode display
 curTmp2 = (tmp2Vlt - handles.tmp2Ofs)/handles.tmp2Cal;
 
 if curTmp2 <= handles.tmpDng2(1) || curTmp2 >= handles.tmpDng2(2) 
@@ -459,10 +459,10 @@ handles.diodeCalTemp = 35;                %temperature for diode calibration
 
 handles.crvWrn = 0.8;               %crv Warning level
 handles.crvDng = 1;                 %crv Danger level
-handles.tmp1Cal = 0.0026;          %temp1 calibration, V/degC
-handles.tmp1Ofs = 1.310;           %temp1 offset, V
-handles.tmp2Cal = 0.0047;         %temp2 calibration, V/degC
-handles.tmp2Ofs = 1.2379;           %temp2 offset, V
+handles.tmp1Cal = 0.00474;          %temp1 calibration, V/degC
+handles.tmp1Ofs = 1.240;           %temp1 offset, V
+handles.tmp2Cal = 0.00472%0.0047;         %temp2 calibration, V/degC
+handles.tmp2Ofs = 1.240%1.2379;           %temp2 offset, V
 handles.tmpWrn1 = [25,40];           %temp warning, degC, diode
 handles.tmpDng1 = [20,45];           %temp danger, degC, diode
 handles.tmpWrn2 = [10,20];           %temp warning, degC, xstal
