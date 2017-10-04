@@ -408,7 +408,7 @@ handles = guidata(mainFigure);
 
 temp = handles.diodeCalTemp;
 
-cal_temp = [22.5];
+cal_temp = [22.5,25];
 %diode monitor voltage to power coeffs (calibrated)
 %a3,a2,a1,a0
 % % voltage_cal_coef = [...
@@ -419,6 +419,7 @@ cal_temp = [22.5];
 
 %current to power coeffs (calibrated)
 current_cal_coef = [...
+    [7.133044902 -13.2458457];...
     [7.133044902 -13.2458457]];
 
 %power supply monitor voltage to current (calibrated)
