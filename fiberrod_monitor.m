@@ -268,7 +268,7 @@ powStr = num2str(curPow,'%.1f');
 set(handles.pwrDisp, 'String', powStr);
 
 %Current, power supply display
-if pscVlt <0.002
+if pscVlt <0.003
     curPsc = 0;
 else
     curPsc = polyval(handles.pscCalCoef, pscVlt);
