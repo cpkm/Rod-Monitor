@@ -77,7 +77,7 @@ end
 msgbox(['Number of detected devices: ', num2str(length(devices))])
 k_array = zeros(length(devices),1,1);
 for i = 1:length(devices)
-    current_device=devices(i)
+    current_device=devices(i);
     device_description=current_device.Description;
 
     k_array(i) = strcmpi('Measurement Computing Corp. USB-1208FS-Plus', device_description); 
@@ -259,7 +259,11 @@ set(handles.t1vDisp, 'String', num2str(tmp1Vlt,'%.4f'));
 set(handles.t2vDisp, 'String', num2str(tmp2Vlt,'%.4f'));
 
 %Power display
-curPow = polyval(handles.pwrEstCoef,pscVlt);
+if pwrVlt <= handles.pwrThdVolt
+   curPow = 0; 
+else
+    curPow = polyval(handles.pwrEstCoef,pscVlt);
+end
 powStr = num2str(curPow,'%.1f');
 set(handles.pwrDisp, 'String', powStr);
 
@@ -425,12 +429,12 @@ current_cal_coef = [...
 %power supply monitor voltage to current (calibrated)
 psc_cal_coef = handles.pscCalCoef;
 
-% output_voltage_coef = interp1(cal_temp,voltage_cal_coef,temp, 'linear', 'extrap');
 current_coef = interp1(cal_temp,current_cal_coef,temp, 'linear', 'extrap');
 %calculate coeff for direct psmv2power (don't calc curent explicitly)
 output_current_coef = [current_coef(1)*psc_cal_coef(1), current_coef(2)+current_coef(1)*psc_cal_coef(2)];
-% handles.pwrCalCoef = output_voltage_coef;
+psc_thd_volt = -output_current_coef(2)/output_current_coef(1);
 handles.pwrEstCoef = output_current_coef;
+handles.pwrThdVolt = psc_thd_volt;
 
 guidata(mainFigure,handles);
 
@@ -454,6 +458,8 @@ handles.output = hObject;
 handles.pwrEstCoef = [46.19635538 -17.22000675];    %power estimate coeffs, calc power from current mon voltage, a1 a0
 handles.pscCalCoef = [5.962247693 0.09016892835];  %curent power supply cal coeffs, a1 a0	
 handles.diodeCalTemp = 22.5;                %default temperature for diode calibration
+handles.pwrThdVolt = 0;                 %default monitor threshold voltage
+set(handles.calTempEdit, 'String', num2str(handles.diodeCalTemp));
 
 handles.crvWrn = 0.8;               %crv Warning level
 handles.crvDng = 1;                 %crv Danger level
@@ -461,10 +467,10 @@ handles.tmp1Cal = 0.00474;          %temp1 calibration, V/degC
 handles.tmp1Ofs = 1.240;           %temp1 offset, V
 handles.tmp2Cal = 0.00472;         %temp2 calibration, V/degC
 handles.tmp2Ofs = 1.240;             %temp2 offset, V
-handles.tmpWrn1 = [25,40];           %temp warning, degC, diode
-handles.tmpDng1 = [20,45];           %temp danger, degC, diode
-handles.tmpWrn2 = [10,20];           %temp warning, degC, xstal
-handles.tmpDng2 = [05,25];           %temp danger, degC, xstal
+handles.tmpWrn1 = [15,30];           %temp warning, degC, rod
+handles.tmpDng1 = [10,40];           %temp danger, degC, rod
+handles.tmpWrn2 = [17.5,27.5];           %temp warning, degC, diode
+handles.tmpDng2 = [15,30];           %temp danger, degC, diode
 
 handles.avgN = 1000;                %number of scans to average per update
 handles.refreshRate = 5;            %refresh rate, times per second
