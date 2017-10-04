@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3351609210" file="C:\Users\Jan Möller\Desktop\fiberrod_monitor.prj" location="C:\Users\Jan Möller\Desktop" name="fiberrod_monitor" preferred-package-location="C:\Users\Jan Möller\Desktop\fiberrod_monitor\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="3351609210" file="C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor.prj" location="C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor" name="fiberrod_monitor" preferred-package-location="C:\Users\Jan Möller\Desktop\fiberrod_monitor\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>fiberrod_monitor</param.appname>
     <param.icon>${PROJECT_ROOT}\fiberrod_monitor_resources\icon.ico</param.icon>
     <param.icons>
@@ -14,7 +14,7 @@
     <param.company>UofT</param.company>
     <param.summary>Monitoring program to run pump diode laser for Fiber Rod</param.summary>
     <param.description>Reads temperature from Thermocouples at diode and rod and monitors diode power supply including derived power estimates.</param.description>
-    <param.screenshot>${PROJECT_ROOT}\lightning.jpg</param.screenshot>
+    <param.screenshot>C:\Users\Jan Möller\Desktop\lightning.jpg</param.screenshot>
     <param.guid />
     <param.installpath.string>\UofT\fiberrod_monitor\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
@@ -66,7 +66,7 @@
       <param.log.file />
     </unset>
     <fileset.main>
-      <file>C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor.m</file>
+      <file>${PROJECT_ROOT}\fiberrod_monitor.m</file>
     </fileset.main>
     <fileset.resources>
       <file>C:\Users\Jan Möller\Documents\MATLAB\fiberrod_monitor.fig</file>
@@ -74,9 +74,9 @@
     <fileset.package />
     <fileset.depfun />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\fiberrod_monitor\for_testing" name="fiberrod_monitor.exe" optional="false">C:\Users\Jan Möller\Desktop\fiberrod_monitor\for_testing\fiberrod_monitor.exe</file>
-      <file location="${PROJECT_ROOT}\fiberrod_monitor\for_testing" name="splash.png" optional="false">C:\Users\Jan Möller\Desktop\fiberrod_monitor\for_testing\splash.png</file>
-      <file location="${PROJECT_ROOT}\fiberrod_monitor\for_testing" name="readme.txt" optional="true">C:\Users\Jan Möller\Desktop\fiberrod_monitor\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\fiberrod_monitor\for_testing" name="fiberrod_monitor.exe" optional="false">C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor\for_testing\fiberrod_monitor.exe</file>
+      <file location="${PROJECT_ROOT}\fiberrod_monitor\for_testing" name="readme.txt" optional="true">C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\fiberrod_monitor\for_testing" name="splash.png" optional="false">C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor\for_testing\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>
