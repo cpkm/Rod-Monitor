@@ -259,7 +259,7 @@ set(handles.t1vDisp, 'String', num2str(tmp1Vlt,'%.4f'));
 set(handles.t2vDisp, 'String', num2str(tmp2Vlt,'%.4f'));
 
 %Power display
-if pwrVlt <= handles.pwrThdVolt
+if pscVlt <= handles.pwrThdVolt
    curPow = 0; 
 else
     curPow = polyval(handles.pwrEstCoef,pscVlt);
