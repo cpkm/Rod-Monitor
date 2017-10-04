@@ -408,7 +408,7 @@ handles = guidata(mainFigure);
 
 temp = handles.diodeCalTemp;
 
-cal_temp = [20,25,30,35];
+cal_temp = [22.5];
 %diode monitor voltage to power coeffs (calibrated)
 %a3,a2,a1,a0
 % % voltage_cal_coef = [...
@@ -419,10 +419,7 @@ cal_temp = [20,25,30,35];
 
 %current to power coeffs (calibrated)
 current_cal_coef = [...
-    [4.612008094 -9.575995553];...
-    [4.478570276 -9.753289314];...
-    [4.416482464 -10.57545691];...
-    [4.396149062 -11.30721815]];
+    [7.133044902 -13.2458457]];
 
 %power supply monitor voltage to current (calibrated)
 psc_cal_coef = handles.pscCalCoef;
@@ -453,9 +450,9 @@ handles.output = hObject;
 
 % Update handles structure, set 'global' parameters
 % handles.pwrCalCoef = [0.4315403228 28.14068064 -3.770681968 0.4096289863];   %power cal coeffs, calc power from monitor voltage, an an-1...
-handles.pwrEstCoef = [30.76897313 -11.93860021];    %power estimate coeffs, calc power from current mon voltage, a1 a0
-handles.pscCalCoef = [5.977168596 0.009309869398];  %curent power supply cal coeffs, a1 a0	
-handles.diodeCalTemp = 35;                %temperature for diode calibration
+handles.pwrEstCoef = [46.19635538 -17.22000675];    %power estimate coeffs, calc power from current mon voltage, a1 a0
+handles.pscCalCoef = [5.962247693 0.09016892835];  %curent power supply cal coeffs, a1 a0	
+handles.diodeCalTemp = 22.5;                %default temperature for diode calibration
 
 handles.crvWrn = 0.8;               %crv Warning level
 handles.crvDng = 1;                 %crv Danger level
