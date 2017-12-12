@@ -423,8 +423,8 @@ cal_temp = [22.5,25];
 
 %current to power coeffs (calibrated)
 current_cal_coef = [...
-    [7.133044902 -13.2458457];...
-    [7.133044902 -13.2458457]];
+    [7.388367711 -18.44702895];...
+    [7.388367711 -18.44702895]];
 
 %power supply monitor voltage to current (calibrated)
 psc_cal_coef = handles.pscCalCoef;
@@ -456,7 +456,7 @@ handles.output = hObject;
 % Update handles structure, set 'global' parameters
 % handles.pwrCalCoef = [0.4315403228 28.14068064 -3.770681968 0.4096289863];   %power cal coeffs, calc power from monitor voltage, an an-1...
 handles.pwrEstCoef = [46.19635538 -17.22000675];    %power estimate coeffs, calc power from current mon voltage, a1 a0
-handles.pscCalCoef = [5.962247693 0.09016892835];  %curent power supply cal coeffs, a1 a0	
+handles.pscCalCoef = [5.99535298 0.02178657245];  %curent power supply cal coeffs, a1 a0	
 handles.diodeCalTemp = 22.5;                %default temperature for diode calibration
 handles.pwrThdVolt = 0;                 %default monitor threshold voltage
 set(handles.calTempEdit, 'String', num2str(handles.diodeCalTemp));
