@@ -423,8 +423,8 @@ cal_temp = [22.5,25];
 
 %current to power coeffs (calibrated)
 current_cal_coef = [...
-    [7.388367711 -18.44702895];...
-    [7.388367711 -18.44702895]];
+    [7.308552492 -14.03629422];...
+    [7.308552492 -14.03629422]];
 
 %power supply monitor voltage to current (calibrated)
 psc_cal_coef = handles.pscCalCoef;
