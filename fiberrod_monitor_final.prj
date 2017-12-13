@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration file="C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor_final.prj" location="C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor" name="fiberrod_monitor_final" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration file="D:\Miller Group Users\Kyle\Code Projects\Rod-Monitor\fiberrod_monitor_final.prj" location="D:\Miller Group Users\Kyle\Code Projects\Rod-Monitor" name="fiberrod_monitor_final" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>fiberrod_monitor</param.appname>
     <param.icon>${PROJECT_ROOT}\fiberrod_monitor_final_resources\icon.ico</param.icon>
     <param.icons>
@@ -8,13 +8,14 @@
       <file>${PROJECT_ROOT}\fiberrod_monitor_final_resources\icon_24.png</file>
       <file>${PROJECT_ROOT}\fiberrod_monitor_final_resources\icon_16.png</file>
     </param.icons>
-    <param.version>1.0</param.version>
+    <param.version>0.2</param.version>
     <param.authnamewatermark>Jan Moeller &amp; Kyle Manchee</param.authnamewatermark>
     <param.email />
     <param.company>UofT</param.company>
     <param.summary>Monitoring program to run pump diode laser for Fiber Rod</param.summary>
-    <param.description>Reads temperature from Thermocouples at diode and rod and monitors diode power supply including derived power estimates.</param.description>
-    <param.screenshot>C:\Users\Jan Möller\Desktop\lightning.jpg</param.screenshot>
+    <param.description>Reads temperature from Thermocouples at diode and rod and monitors diode power supply including derived power estimates.
+2017/12/13 - Updataed diode calibration</param.description>
+    <param.screenshot />
     <param.guid />
     <param.installpath.string>\UofT\fiberrod_monitor\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
@@ -40,9 +41,13 @@
     <param.windows.command.prompt>true</param.windows.command.prompt>
     <param.create.log>false</param.create.log>
     <param.log.file />
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text />
     <unset>
-      <param.version />
       <param.email />
+      <param.screenshot />
       <param.guid />
       <param.installpath.string />
       <param.installpath.combo />
@@ -63,6 +68,10 @@
       <param.windows.command.prompt />
       <param.create.log />
       <param.log.file />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
+      <param.help.text />
     </unset>
     <fileset.main>
       <file>${PROJECT_ROOT}\fiberrod_monitor.m</file>
@@ -73,14 +82,51 @@
     <fileset.package />
     <fileset.depfun />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\fiberrod_monitor_final\for_testing" name="readme.txt" optional="true">C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor_final\for_testing\readme.txt</file>
-      <file location="${PROJECT_ROOT}\fiberrod_monitor_final\for_testing" name="fiberrod_monitor.exe" optional="false">C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor_final\for_testing\fiberrod_monitor.exe</file>
-      <file location="${PROJECT_ROOT}\fiberrod_monitor_final\for_testing" name="splash.png" optional="false">C:\Users\Jan Möller\Uni\Masterarbeit\Rod-Monitor\fiberrod_monitor_final\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\fiberrod_monitor_final\for_testing" name="fiberrod_monitor.exe" optional="false">D:\Miller Group Users\Kyle\Code Projects\Rod-Monitor\fiberrod_monitor_final\for_testing\fiberrod_monitor.exe</file>
+      <file location="${PROJECT_ROOT}\fiberrod_monitor_final\for_testing" name="readme.txt" optional="true">D:\Miller Group Users\Kyle\Code Projects\Rod-Monitor\fiberrod_monitor_final\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\fiberrod_monitor_final\for_testing" name="splash.png" optional="false">D:\Miller Group Users\Kyle\Code Projects\Rod-Monitor\fiberrod_monitor_final\for_testing\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2017a</root>
-      <toolboxes />
+      <root>C:\Program Files\MATLAB\R2017b</root>
+      <toolboxes>
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabcoder" />
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="polyspacebugfinder" />
+      </toolboxes>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
+      </toolbox>
     </matlab>
     <platform>
       <unix>false</unix>
@@ -91,7 +137,7 @@
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>6.1</osver>
+      <osver>10.0</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>win64</arch>
