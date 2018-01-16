@@ -328,7 +328,7 @@ if get(handles.logCheck, 'Value') == 1
     %only log every second
     i = handles.logNum;
     if mod(i,handles.refreshRate) == 0
-        logData(handles,[(event.TriggerTime + mean(event.TimeStamps)/86400),curPsc,curPow,curCrv,curTmp1,curTmp2]);
+        logData(handles,[(event.TriggerTime + mean(event.TimeStamps)/86400),curPsc,curPow,curTmp1,curTmp2]);
     end
     handles.logNum = i+1;
     guidata(hObject,handles);
@@ -348,20 +348,20 @@ if isempty(data)
     fprintf(fileid, 'FibreRod System Monitor\n\n');           %change name here
     fprintf(fileid, 'Sampling rate =\t%.3f Hz\n', handles.sampleRate);
     fprintf(fileid, 'Number of samples averaged =\t%.0f\n', handles.avgN);
-    fprintf(fileid, 'Power Calibration (a0...aN):\t%s\n', sprintf('%.4f\t', handles.pwrCalCoef));
+    fprintf(fileid, 'Power Calibration (a0...aN):\t%s\n', sprintf('%.4f\t', handles.pscCalCoef));
     
-    fprintf(fileid,'\n%23s\t%8s\t%8s\t%8s\t%8s\t%8s\n','Time','Current','Power','Crossover', 'T1', 'T2');
-    fprintf(fileid,'%23s\t%8s\t%8s\t%8s\t%8s\t%8s\n','yyyy/mm/dd hh:mm:ss.fff','(A)','(W)','(ratio)', '(degC)', '(degC)');
+    fprintf(fileid,'\n%23s\t%8s\t%8s\t%8s\t%8s\n','Time','Current','Power', 'T1', 'T2');
+    fprintf(fileid,'%23s\t%8s\t%8s\t%8s\t%8s\n','yyyy/mm/dd hh:mm:ss.fff','(A)','(W)','(degC)', '(degC)');
     fclose(fileid);
     
 else
     %append to log
-    if length(data) < 6
-        data = [data, zeros(6-length(data))];
+    if length(data) < 5
+        data = [data, zeros(5-length(data))];
     end
     
     fileid = fopen(get(handles.logFilename, 'String'), 'at');
-    fprintf(fileid,'%23s\t%8.4f\t%8.3f\t%8.5f\t%8.2f\t%8.2f\n', datestr(data(1), 'yyyy/mm/dd HH:MM:SS.FFF'),data(2:6));
+    fprintf(fileid,'%23s\t%8.4f\t%8.3f\t%8.2f\t%8.2f\n', datestr(data(1), 'yyyy/mm/dd HH:MM:SS.FFF'),data(2:5));
     fclose(fileid);
     
 end
