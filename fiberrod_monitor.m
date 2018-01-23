@@ -74,24 +74,17 @@ if isempty(devices)
     return
 end
 
-msgbox(['Number of detected devices: ', num2str(length(devices))])
-k_array = zeros(length(devices),1,1);
-for i = 1:length(devices)
-    current_device=devices(i);
-    device_description=current_device.Description;
+k = strcmpi('Measurement Computing Corp. USB-1208FS-Plus', {devices.Description});
 
-    k_array(i) = strcmpi('Measurement Computing Corp. USB-1208FS-Plus', device_description); 
-end
-
-if all(k_array==0)
+if all(k==0)
     e = 0;
-    msg = 'USB-1208FS-Plus';  
+    msg = 'USB-1208FS-Plus not found';
     return
 end
 
 % try
 %get index of matching element
-index = find(k_array);
+index = find(k);
 index = index(1);
 
 %get vendor and devicesID info
@@ -100,16 +93,10 @@ devID = devices(index).ID;
 
 %create session
 s = daq.createSession(vendor); % mcc is a valid vendor since Matlab 2017a after installing mcc hardware support package
-s.Rate = handles.sampleRate; %how does "handles" know?
+s.Rate = handles.sampleRate; 
 s.IsContinuous = true;
 
-%new create another session to set output voltage (was not allowed in same
-%session)
-s1 = daq.createSession(vendor); 
-
 %create channels
-%add if's to change if channels are created (check box in giu?)
-
 %input channels
 [tmp1Ch, handles.tmp1Idx] = addAnalogInputChannel(s, devID, 'ai0', 'Voltage');
 tmp1Ch.Name = 'TemperatureRod';
@@ -124,15 +111,8 @@ pscCh.Name = 'PowerSupplyCurrent';
 pscCh.TerminalConfig = 'Differential';
 pscCh.Range = [-10, 10];
 
-%output channel
-[outCh, handles.outIdx] = addAnalogOutputChannel(s1, devID, 'ao1', 'Voltage');    
-outCh.Name = 'PowerThermoCouple';
-% sets output voltage for Thermocouple amplifier in another session
-s1.outputSingleScan(5)
-
-
 handles.session = s;
-guidata(handles.figure1,handles);  %????
+guidata(handles.figure1,handles);
 
 %set up/enable monitor button
 set(handles.monToggle, 'BackgroundColor', [0,1,0]);
