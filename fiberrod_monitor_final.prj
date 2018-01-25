@@ -8,13 +8,14 @@
       <file>${PROJECT_ROOT}\fiberrod_monitor_final_resources\icon_24.png</file>
       <file>${PROJECT_ROOT}\fiberrod_monitor_final_resources\icon_16.png</file>
     </param.icons>
-    <param.version>0.2</param.version>
+    <param.version>0.3</param.version>
     <param.authnamewatermark>Jan Moeller &amp; Kyle Manchee</param.authnamewatermark>
     <param.email />
     <param.company>UofT</param.company>
     <param.summary>Monitoring program to run pump diode laser for Fiber Rod</param.summary>
     <param.description>Reads temperature from Thermocouples at diode and rod and monitors diode power supply including derived power estimates.
-2017/12/13 - Updataed diode calibration</param.description>
+2017/12/13 - Updated diode calibration
+2018/01/25 - v0.3 - Fixed logging, cleaned up code, removed unwanted popups.</param.description>
     <param.screenshot />
     <param.guid />
     <param.installpath.string>\UofT\fiberrod_monitor\</param.installpath.string>
